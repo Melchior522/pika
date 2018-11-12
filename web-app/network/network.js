@@ -73,7 +73,7 @@ module.exports = {
   * @param {String} phoneNumber Member phone number
   * @param {String} email Member email
   */
- registerMember: async function (cardId, accountNumber,firstName, lastName, email, phoneNumber) {
+ registerMember: async function (cardId, accountNumber,firstName, lastName, email, phoneNumber,a,b) {
     try {
 
       //connect as admin

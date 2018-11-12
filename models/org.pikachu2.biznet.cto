@@ -25,7 +25,7 @@ participant Member identified by  accountNumber{
   o String phoneNumber
   o String email
   o Integer points
-  o Integer credit
+  o Integer credits
   
 
 }
@@ -35,26 +35,26 @@ participant Company identified by id{
   o String id
   o String name 
   o Integer points
-  o Integer credit
+  o Integer credits
 }
 
 //user
 transaction userEarnCredit {
-  o Integer credit
+  o Integer credits
   --> Member member
 }
 
 transaction userLoseCredit {
-  o Integer credit
+  o Integer credits
   --> Member member
 }
 //company
 transaction companyLoseCredit {
-  o Integer credit
+  o Integer credits
   --> Company company
 }
 transaction companyEarnCredit {
-  o Integer credit
+  o Integer credits
   --> Company company
 }
 

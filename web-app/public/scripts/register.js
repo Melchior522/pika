@@ -73,7 +73,7 @@ $('.register-partner').click(function() {
   //make ajax call to add the dataset
   $.ajax({
     type: 'POST',
-    url: apiUrl + 'registerPartner',
+    url: apiUrl + 'registerCompany',
     data: inputData,
     dataType: 'json',
     contentType: 'application/json',

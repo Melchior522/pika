@@ -63,7 +63,7 @@ app.post('/api/registerMember', function(req, res) {
   var phoneNumber = req.body.phonenumber;
 
   //print variables
-  console.log('Using param - firstname: ' + firstName + ' lastname: ' + lastName + ' email: ' + email + ' phonenumber: ' + phoneNumber + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + 'points' + ponits);
+  console.log('Using param - firstname: ' + firstName + ' lastname: ' + lastName + ' email: ' + email + ' phonenumber: ' + phoneNumber + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId );
 
   //validate member registration fields
   validate.validateMemberRegistration(cardId, accountNumber, firstName, lastName, email, phoneNumber)
