@@ -97,7 +97,7 @@ app.post('/api/registerMember', function(req, res) {
 });
 
 //post call to register partner on the network
-app.post('/api/registerPartner', function(req, res) {
+app.post('/api/registerCompany', function(req, res) {
 
   //declare variables to retrieve from request
   var name = req.body.name;
@@ -118,7 +118,7 @@ app.post('/api/registerPartner', function(req, res) {
         return;
       } else {
         //else register partner on the network
-        network.registerPartner(cardId, partnerId, name)
+        network.registerCompany(cardId, partnerId, name)
           .then((response) => {
             //return error if error in response
             if (response.error != null) {
