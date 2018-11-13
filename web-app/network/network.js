@@ -187,7 +187,7 @@ module.exports = {
       const userEarnPoints = factory.newTransaction(namespace, 'userEarnPoints');
       userEarnPoints.points = points;
       userEarnPoints.member = factory.newRelationship(namespace, 'Member', accountNumber);
-      userEarnPoints.Company = factory.newRelationship(namespace, 'Company', CompanyId);
+      userEarnPoints.company = factory.newRelationship(namespace, 'Company', CompanyId);  //company一定要小写
 
       //submit transaction
       await businessNetworkConnection.submitTransaction(userEarnPoints);
