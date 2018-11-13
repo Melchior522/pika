@@ -1,4 +1,4 @@
-{ "name":"hlfv12","x-type":"hlfv12","x-commitTimeout":300,"version":"1.0.0",
+{ "name":"hlfv1","x-type":"hlfv1","x-commitTimeout":300,"version":"1.0.0",
     "client":{"organization":"Org1","connection":{"timeout":{"peer":{"endorser":"300",
         "eventHub":"300","eventReg":"300"},"orderer":"300"}}},
         "channels":{"composerchannel":{"orderers":["orderer.example.com"],
