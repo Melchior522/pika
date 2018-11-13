@@ -137,7 +137,7 @@ module.exports = {
       //create Company participant
       const Company = factory.newResource(namespace, 'Company', CompanyId);
       Company.name = name;
-      Company.points = 100000;
+      Company.points = 10000;
       Company.credit = 80;
 
       //add Company participant

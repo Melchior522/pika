@@ -101,14 +101,14 @@ app.post('/api/registerCompany', function(req, res) {
 
   //declare variables to retrieve from request
   var name = req.body.name;
-  var partnerId = req.body.partnerid;
+  var CompanyId = req.body.partnerid;
   var cardId = req.body.cardid;
 
   //print variables
-  console.log('Using param - name: ' + name + ' partnerId: ' + partnerId + ' cardId: ' + cardId);
+  console.log('Using param - name: ' + name + ' CompanyId: ' + CompanyId + ' cardId: ' + cardId);
 
   //validate partner registration fields
-  validate.validatePartnerRegistration(cardId, partnerId, name)
+  validate.validatePartnerRegistration(cardId, CompanyId, name)
     .then((response) => {
       //return error if error in response
       if (response.error != null) {
@@ -118,7 +118,7 @@ app.post('/api/registerCompany', function(req, res) {
         return;
       } else {
         //else register partner on the network
-        network.registerCompany(cardId, partnerId, name)
+        network.registerCompany(cardId, CompanyId, name)
           .then((response) => {
             //return error if error in response
             if (response.error != null) {
@@ -143,11 +143,11 @@ app.post('/api/userEarnPoints', function(req, res) {
   //declare variables to retrieve from request
   var accountNumber = req.body.accountnumber;
   var cardId = req.body.cardid;
-  var partnerId = req.body.partnerid;
+  var CompanyId = req.body.partnerid;
   var points = parseFloat(req.body.points);
 
   //print variables
-  console.log('Using param - points: ' + points + ' partnerId: ' + partnerId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId);
+  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId);
 
   //validate points field
   validate.validatePoints(points)
@@ -161,7 +161,7 @@ app.post('/api/userEarnPoints', function(req, res) {
       } else {
         points = checkPoints;
         //else perforn EarnPoints transaction on the network
-        network.userEarnPointsTransaction(cardId, accountNumber, partnerId, points)
+        network.userEarnPointsTransaction(cardId, accountNumber, CompanyId, points)
           .then((response) => {
             //return error if error in response
             if (response.error != null) {
@@ -186,11 +186,11 @@ app.post('/api/userUsePoints', function(req, res) {
   //declare variables to retrieve from request
   var accountNumber = req.body.accountnumber;
   var cardId = req.body.cardid;
-  var partnerId = req.body.partnerid;
+  var CompanyId = req.body.partnerid;
   var points = parseFloat(req.body.points);
 
   //print variables
-  console.log('Using param - points: ' + points + ' partnerId: ' + partnerId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId);
+  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId);
 
   //validate points field
   validate.validatePoints(points)
@@ -204,7 +204,7 @@ app.post('/api/userUsePoints', function(req, res) {
       } else {
         points = checkPoints;
         //else perforn UsePoints transaction on the network
-        network.userUsePointsTransaction(cardId, accountNumber, partnerId, points)
+        network.userUsePointsTransaction(cardId, accountNumber, CompanyId, points)
           .then((response) => {
             //return error if error in response
             if (response.error != null) {
@@ -314,16 +314,16 @@ app.post('/api/memberData', function(req, res) {
 app.post('/api/partnerData', function(req, res) {
 
   //declare variables to retrieve from request
-  var partnerId = req.body.partnerid;
+  var CompanyId = req.body.partnerid;
   var cardId = req.body.cardid;
   //print variables
-  console.log('partnerData using param - ' + ' partnerId: ' + partnerId + ' cardId: ' + cardId);
+  console.log('partnerData using param - ' + ' CompanyId: ' + CompanyId + ' cardId: ' + cardId);
 
   //declare return object
   var returnData = {};
 
   //get partner data from network
-  network.CompanyData(cardId, partnerId)
+  network.CompanyData(cardId, CompanyId)
     .then((partner) => {
       //return error if error in response
       if (partner.error != null) {
