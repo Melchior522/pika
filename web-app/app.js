@@ -334,7 +334,8 @@ app.post('/api/partnerData', function(req, res) {
         //else add partner data to return object
         returnData.id = partner.id;
         returnData.name = partner.name;
-        returnData.credit = partner.credit
+        returnData.points=partner.points;
+        returnData.credit = partner.credit;
       }
 
     })
