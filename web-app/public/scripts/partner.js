@@ -37,6 +37,7 @@ $('.sign-in-partner').click(function() {
         $('.heading').html(function() {
           var str = '<h2><b> ' + data.name + ' </b></h2>';
           str = str + '<h2><b> ' + data.id + ' </b></h2>';
+          str = str + '<h2><b> ' + data.points + ' </b></h2>';
           str = str + '<h2><b> ' + data.credit + ' </b></h2>';
           return str;
         });

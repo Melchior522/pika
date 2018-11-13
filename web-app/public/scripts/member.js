@@ -109,16 +109,16 @@ function updateMember() {
 }
 
 
-$('.earn-points-30').click(function() {
-  earnPoints(30);
+$('.earn-points-150').click(function() {
+  earnPoints(150);
 });
 
-$('.earn-points-80').click(function() {
-  earnPoints(80);
+$('.earn-points-400').click(function() {
+  earnPoints(40);
 });
 
-$('.earn-points-200').click(function() {
-  earnPoints(200);
+$('.earn-points-1000').click(function() {
+  earnPoints(1000);
 });
 
 
@@ -126,7 +126,7 @@ $('.earn-points-200').click(function() {
 $('.earn-points-transaction').click(function() {
 
   var formPoints = $('.earnPoints input').val();
-  earnPoints(formPoints);
+  earnPoints(formPoints/5);
 });
 
 
