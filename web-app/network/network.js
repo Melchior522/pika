@@ -229,7 +229,7 @@ module.exports = {
       const userUsePoints = factory.newTransaction(namespace, 'userUsePoints');
       userUsePoints.points = points;
       userUsePoints.member = factory.newRelationship(namespace, 'Member', accountNumber);
-      userUsePoints.Company = factory.newRelationship(namespace, 'Company', CompanyId);
+      userUsePoints.company = factory.newRelationship(namespace, 'Company', CompanyId);
 
       //submit transaction
       await businessNetworkConnection.submitTransaction(userUsePoints);
