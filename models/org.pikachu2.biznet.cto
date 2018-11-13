@@ -26,8 +26,6 @@ participant Member identified by  accountNumber{
   o String email
   o Integer points
   o Integer credit
-  
-
 }
 
 //company信息
