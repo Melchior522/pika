@@ -25,7 +25,7 @@ participant Member identified by  accountNumber{
   o String phoneNumber
   o String email
   o Integer points
-  o Integer credits
+  o Integer credit
   
 
 }

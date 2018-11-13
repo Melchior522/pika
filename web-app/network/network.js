@@ -90,7 +90,7 @@ module.exports = {
       member.email = email;
       member.phoneNumber = phoneNumber;
       member.points = 100;
-      member.credits = 80;
+      member.credit = 80;
 
       //add member participant
       const participantRegistry = await businessNetworkConnection.getParticipantRegistry(namespace + '.Member');
@@ -138,7 +138,7 @@ module.exports = {
       const Company = factory.newResource(namespace, 'Company', CompanyId);
       Company.name = name;
       Company.points = 100000;
-      Company.credits = 80;
+      Company.credit = 80;
 
       //add Company participant
       const participantRegistry = await businessNetworkConnection.getParticipantRegistry(namespace + '.Company');
