@@ -42,10 +42,10 @@ function updateMember() {
           var str = '<h2><b>' + data.firstName + ' ' + data.lastName + '</b></h2>';
           str = str + '<h2><b>' + data.accountNumber + '</b></h2>';
           str = str + '<h2><b>' + data.points + '</b></h2>';
-          str = str + '<h2><b>' + data.credit + '</b></h2>';
+          str = str + '<h2><b id=\'ffck\'>' + data.credit + '</b></h2>';
           return str;
         });
-
+        
         //update partners dropdown for earn points transaction
         $('.earn-partner select').html(function() {
           var str = '<option value="" disabled="" selected="">select</option>';
@@ -110,45 +110,7 @@ function updateMember() {
   });
   return data.credit;
 }
-function updateCredit(){
-  var formAccountNum = $('.account-number input').val();
-  var formCardId = $('.card-id input').val();
 
-  //create json data
-  var inputData = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '"}';
-  console.log(inputData)
-
-  //make ajax call
-  $.ajax({
-    type: 'POST',
-    url: apiUrl + 'memberData',
-    data: inputData,
-    dataType: 'json',
-    contentType: 'application/json',
-    beforeSend: function() {
-    },
-    success: function(data) {
-      //check data for error
-      if (data.error) {
-        alert(data.error);
-        return;
-      } else {
-        }
-      },
-    error: function(jqXHR, textStatus, errorThrown) {
-      //reload on error
-      alert("Error: Try again")
-      console.log(errorThrown);
-      console.log(textStatus);
-      console.log(jqXHR);
-    },
-    complete: function() {
-
-    }
-  });
-  return data.credit;
-}
-var credit=updatecredit();
 
 $('.earn-points-30').click(function() {
   earnPoints(30);
@@ -176,7 +138,7 @@ function earnPoints(formPoints) {
   //get user input data
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
-  var formCredit = credit;
+  var formCredit = parseInt($('.ffck b').text());
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
@@ -247,7 +209,7 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = credit;
+  var formCredit = parseInt($('.ffck b').text());
   
 
   //create json data
