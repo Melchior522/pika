@@ -150,30 +150,30 @@ function earnPoints(formPoints) {
     dataType: 'json',
     contentType: 'application/json',
     beforeSend: function() {
-      //display loading
+      
       document.getElementById('loader').style.display = "block";
     },
     success: function(data) {
 
-      //get user input data
+      
         var formAccountNum = $('.account-number input').val();
         var formCardId = $('.card-id input').val();
-        var formCredit = data.credit//此处留意
+        var formCredit = data.credit
         var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
-        //create json data
-        var inputData = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit +'"}';
-        console.log(inputData)
+        
+        var inputData2 = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit +'"}';
+        console.log(inputData2)
 
-        //make ajax call
+       
         $.ajax({
             type: 'POST',
             url: apiUrl + 'userEarnPoints',
-            data: inputData,
+            data: inputData2,
             dataType: 'json',
             contentType: 'application/json',
             beforeSend: function() {
-            //display loading
+            
             document.getElementById('loader').style.display = "block";
             document.getElementById('infoSection').style.display = "none";
             },
@@ -182,12 +182,12 @@ function earnPoints(formPoints) {
             document.getElementById('loader').style.display = "none";
             document.getElementById('infoSection').style.display = "block";
 
-            //check data for error
+           
             if (data.error) {
                 alert(data.error);
                 return;
             } else {
-             //update member page and notify successful transaction
+             
                 updateMember();
                 alert('Transaction successful');
             }
@@ -195,7 +195,7 @@ function earnPoints(formPoints) {
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
-      alert("Error: Try again")
+      alert("Error01: Try again")
       console.log(errorThrown);
       console.log(textStatus);
       console.log(jqXHR);
@@ -205,7 +205,7 @@ function earnPoints(formPoints) {
     },
     error: function(jqXHR, textStatus, errorThrown) {
       //reload on error
-      alert("Error: Try again")
+      alert("Error02: Try again")
       console.log(errorThrown);
       console.log(textStatus);
       console.log(jqXHR);
@@ -257,30 +257,30 @@ function usePoints(formPoints) {
     dataType: 'json',
     contentType: 'application/json',
     beforeSend: function() {
-      //display loading
+      
       document.getElementById('loader').style.display = "block";
     },
     success: function(data) {
 
-      //get user input data
+     
         var formAccountNum = $('.account-number input').val();
         var formCardId = $('.card-id input').val();
-        var formCredit = data.credit//此处留意
+        var formCredit = data.credit
         var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
-        //create json data
-        var inputData = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit +'"}';
-        console.log(inputData)
+        
+        var inputData2 = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit +'"}';
+        console.log(inputData2)
 
-        //make ajax call
+        
         $.ajax({
             type: 'POST',
             url: apiUrl + 'userUsePoints',
-            data: inputData,
+            data: inputData2,
             dataType: 'json',
             contentType: 'application/json',
             beforeSend: function() {
-            //display loading
+            
             document.getElementById('loader').style.display = "block";
             document.getElementById('infoSection').style.display = "none";
             },
@@ -289,12 +289,12 @@ function usePoints(formPoints) {
             document.getElementById('loader').style.display = "none";
             document.getElementById('infoSection').style.display = "block";
 
-            //check data for error
+            
             if (data.error) {
                 alert(data.error);
                 return;
             } else {
-             //update member page and notify successful transaction
+             
                 updateMember();
                 alert('Transaction successful');
             }
@@ -302,7 +302,7 @@ function usePoints(formPoints) {
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
-      alert("Error: Try again")
+      alert("Error11: Try again")
       console.log(errorThrown);
       console.log(textStatus);
       console.log(jqXHR);
@@ -311,8 +311,8 @@ function usePoints(formPoints) {
 
     },
     error: function(jqXHR, textStatus, errorThrown) {
-      //reload on error
-      alert("Error: Try again")
+      
+      alert("Error12: Try again")
       console.log(errorThrown);
       console.log(textStatus);
       console.log(jqXHR);
