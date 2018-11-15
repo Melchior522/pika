@@ -172,6 +172,7 @@ function earnPoints(formPoints) {
             data: inputData2,
             dataType: 'json',
             contentType: 'application/json',
+            async: false,
             beforeSend: function() {
             
             document.getElementById('loader').style.display = "block";
@@ -279,6 +280,7 @@ function usePoints(formPoints) {
             data: inputData2,
             dataType: 'json',
             contentType: 'application/json',
+            async: false,
             beforeSend: function() {
             
             document.getElementById('loader').style.display = "block";
