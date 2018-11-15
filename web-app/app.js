@@ -143,8 +143,8 @@ app.post('/api/userEarnPoints', function(req, res) {
   //declare variables to retrieve from request
   var accountNumber = req.body.accountnumber;
   var cardId = req.body.cardid;
-  var CompanyId = req.body.partnerid;
   var points = parseFloat(req.body.points);
+  var CompanyId = req.body.partnerid;
   var credit = req.body.credit;
 
   //print variables
@@ -187,8 +187,8 @@ app.post('/api/userUsePoints', function(req, res) {
   //declare variables to retrieve from request
   var accountNumber = req.body.accountnumber;
   var cardId = req.body.cardid;
-  var CompanyId = req.body.partnerid;
   var points = parseFloat(req.body.points);
+  var CompanyId = req.body.partnerid;
   var credit = req.body.credit;
 
   //print variables

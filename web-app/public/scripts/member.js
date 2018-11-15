@@ -138,7 +138,7 @@ function earnPoints(formPoints) {
   //get user input data
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
-  var formCredit = $('.ffck b').val();
+  var formCredit = parseInt($('.ffck b').val());
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
@@ -149,7 +149,7 @@ function earnPoints(formPoints) {
     $.ajax({
             type: 'POST',
             url: apiUrl + 'userEarnPoints',
-            data: inputData2,
+            data: inputData,
             dataType: 'json',
             contentType: 'application/json',
             beforeSend: function() {
@@ -209,7 +209,7 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = $('.ffck b').val();
+  var formCredit = parseInt($('.ffck b').val());
   
 
   //create json data
