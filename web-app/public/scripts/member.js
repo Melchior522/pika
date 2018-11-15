@@ -108,7 +108,7 @@ function updateMember() {
 
     }
   });
-  return data.credit;
+  
 }
 
 
@@ -138,7 +138,7 @@ function earnPoints(formPoints) {
   //get user input data
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
-  var formCredit = parseInt($('.ffck b').text());
+  var formCredit = $('.ffck b').val();
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
@@ -209,7 +209,7 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = parseInt($('.ffck b').text());
+  var formCredit = $('.ffck b').val();
   
 
   //create json data
