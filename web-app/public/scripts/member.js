@@ -92,7 +92,9 @@ function updateMember() {
         //remove login section and display member page
         document.getElementById('loginSection').style.display = "none";
         document.getElementById('transactionSection').style.display = "block";
+      
       }
+      
 
     },
     error: function(jqXHR, textStatus, errorThrown) {
@@ -106,6 +108,7 @@ function updateMember() {
 
     }
   });
+  return data.credit;
 }
 
 
@@ -135,7 +138,7 @@ function earnPoints(formPoints) {
   //get user input data
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
-  var formCredit = $('.credit input').val();//此处留意
+  var formCredit = updateMember();
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
@@ -143,31 +146,7 @@ function earnPoints(formPoints) {
   console.log(inputData)
 
   //make ajax call
-  $.ajax({
-    type: 'POST',
-    url: apiUrl + 'memberData',
-    data: inputData,
-    dataType: 'json',
-    contentType: 'application/json',
-    async: false,
-    beforeSend: function() {
-      
-      document.getElementById('loader').style.display = "block";
-    },
-    success: function(data) {
-
-      
-        var formAccountNum = $('.account-number input').val();
-        var formCardId = $('.card-id input').val();
-        var formCredit = data.credit
-        var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
-
-        
-        var inputData2 = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit +'"}';
-        console.log(inputData2)
-
-       
-        $.ajax({
+    $.ajax({
             type: 'POST',
             url: apiUrl + 'userEarnPoints',
             data: inputData2,
@@ -203,20 +182,6 @@ function earnPoints(formPoints) {
       console.log(jqXHR);
     }
   });
-
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      //reload on error
-      alert("Error02: Try again")
-      console.log(errorThrown);
-      console.log(textStatus);
-      console.log(jqXHR);
-    },
-    complete: function() {
-
-    }
-  });
-
 }
 
 $('.use-points-50').click(function() {
@@ -245,41 +210,18 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
+  var formCredit = updateMember();
   
 
   //create json data
-  var inputData = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"}';
+  var inputData = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit + '"}';
   console.log(inputData)
 
   //make ajax call
   $.ajax({
-    type: 'POST',
-    url: apiUrl + 'memberData',
-    data: inputData,
-    dataType: 'json',
-    contentType: 'application/json',
-    async: false,
-    beforeSend: function() {
-      
-      document.getElementById('loader').style.display = "block";
-    },
-    success: function(data) {
-
-     
-        var formAccountNum = $('.account-number input').val();
-        var formCardId = $('.card-id input').val();
-        var formCredit = data.credit
-        var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
-
-        
-        var inputData2 = '{' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId + '"credit" : "' + formCredit +'"}';
-        console.log(inputData2)
-
-        
-        $.ajax({
             type: 'POST',
             url: apiUrl + 'userUsePoints',
-            data: inputData2,
+            data: inputData,
             dataType: 'json',
             contentType: 'application/json',
             async: false,
@@ -313,17 +255,6 @@ function usePoints(formPoints) {
     }
   });
 
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      
-      alert("Error12: Try again")
-      console.log(errorThrown);
-      console.log(textStatus);
-      console.log(jqXHR);
-    },
-    complete: function() {
-
-    }
-  });
+    
 
 }
