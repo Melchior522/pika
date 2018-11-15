@@ -145,9 +145,10 @@ app.post('/api/userEarnPoints', function(req, res) {
   var cardId = req.body.cardid;
   var CompanyId = req.body.partnerid;
   var points = parseFloat(req.body.points);
+  var credit = parseFloat(req.body.credit);
 
   //print variables
-  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId);
+  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + ' credit: ' + credit);
 
   //validate points field
   validate.validatePoints(points)
@@ -161,7 +162,7 @@ app.post('/api/userEarnPoints', function(req, res) {
       } else {
         points = checkPoints;
         //else perforn EarnPoints transaction on the network
-        network.userEarnPointsTransaction(cardId, accountNumber, CompanyId, points)
+        network.userEarnPointsTransaction(cardId, accountNumber, CompanyId, points,credit)
           .then((response) => {
             //return error if error in response
             if (response.error != null) {
@@ -188,9 +189,10 @@ app.post('/api/userUsePoints', function(req, res) {
   var cardId = req.body.cardid;
   var CompanyId = req.body.partnerid;
   var points = parseFloat(req.body.points);
+  var credit = parseFloat(req.body.credit)
 
   //print variables
-  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId);
+  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId +'credit'+credit);
 
   //validate points field
   validate.validatePoints(points)
@@ -204,7 +206,7 @@ app.post('/api/userUsePoints', function(req, res) {
       } else {
         points = checkPoints;
         //else perforn UsePoints transaction on the network
-        network.userUsePointsTransaction(cardId, accountNumber, CompanyId, points)
+        network.userUsePointsTransaction(cardId, accountNumber, CompanyId, points,credit)
           .then((response) => {
             //return error if error in response
             if (response.error != null) {

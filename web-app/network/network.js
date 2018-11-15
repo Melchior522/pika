@@ -83,6 +83,20 @@ module.exports = {
       //get the factory for the business network
       factory = businessNetworkConnection.getBusinessNetwork().getFactory();
 
+      //随机数
+      var rand = (function(){
+        var today = new Date();
+        var seed = today.getTime();
+        function rnd(){
+          seed = ( seed * 9301 + 49297 ) % 233280;
+          return seed / ( 233280.0 );
+        };
+        return function rand(number){
+          return Math.ceil(rnd(seed) * number);
+        };
+      })();
+      
+
       //create member participant
       const member = factory.newResource(namespace, 'Member', accountNumber);
       member.firstName = firstName;
@@ -90,7 +104,7 @@ module.exports = {
       member.email = email;
       member.phoneNumber = phoneNumber;
       member.points = 100;
-      member.credit = 80;
+      member.credit = rand(100);
 
       //add member participant
       const participantRegistry = await businessNetworkConnection.getParticipantRegistry(namespace + '.Member');
@@ -134,11 +148,23 @@ module.exports = {
       //get the factory for the business network.
       factory = businessNetworkConnection.getBusinessNetwork().getFactory();
 
+      var rand = (function(){
+        var today = new Date();
+        var seed = today.getTime();
+        function rnd(){
+          seed = ( seed * 9301 + 49297 ) % 233280;
+          return seed / ( 233280.0 );
+        };
+        return function rand(number){
+          return Math.ceil(rnd(seed) * number);
+        };
+      })();
+
       //create Company participant
       const Company = factory.newResource(namespace, 'Company', CompanyId);
       Company.name = name;
       Company.points = 10000;
-      Company.credit = 80;
+      Company.credit = rand(100);
 
       //add Company participant
       const participantRegistry = await businessNetworkConnection.getParticipantRegistry(namespace + '.Company');
@@ -172,7 +198,7 @@ module.exports = {
   * @param {String} CompanyId Company Id of Company
   * @param {Integer} points Points value
   */
-  userEarnPointsTransaction: async function (cardId, accountNumber, CompanyId, points) {
+  userEarnPointsTransaction: async function (cardId, accountNumber, CompanyId, points,credit) {
 
     try {
 
@@ -186,6 +212,7 @@ module.exports = {
       //create transaction
       let userEarnPoints = factory.newTransaction(namespace, 'userEarnPoints');
       userEarnPoints.points = points;
+      userEarnPoints.credit = credit;
       userEarnPoints.member = factory.newRelationship(namespace, 'Member', accountNumber);
       userEarnPoints.company = factory.newRelationship(namespace, 'Company', CompanyId);  //company一定要小写
 
@@ -214,7 +241,7 @@ module.exports = {
   * @param {String} CompanyId Company Id of Company
   * @param {Integer} points Points value
   */
-  userUsePointsTransaction: async function (cardId, accountNumber, CompanyId, points) {
+  userUsePointsTransaction: async function (cardId, accountNumber, CompanyId, points,credit) {
 
     try {
 
@@ -228,6 +255,7 @@ module.exports = {
       //create transaction
       const userUsePoints = factory.newTransaction(namespace, 'userUsePoints');
       userUsePoints.points = points;
+      userUsePoints.credit = credit;
       userUsePoints.member = factory.newRelationship(namespace, 'Member', accountNumber);
       userUsePoints.company = factory.newRelationship(namespace, 'Company', CompanyId);
 
