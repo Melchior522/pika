@@ -110,7 +110,7 @@ function updateMember() {
   });
   return data.credit;
 }
-
+var credit=updateMember();
 
 $('.earn-points-30').click(function() {
   earnPoints(30);
@@ -138,7 +138,7 @@ function earnPoints(formPoints) {
   //get user input data
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
-  var formCredit = updateMember();
+  var formCredit = credit;
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
@@ -210,7 +210,7 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = updateMember();
+  var formCredit = credit;
   
 
   //create json data
