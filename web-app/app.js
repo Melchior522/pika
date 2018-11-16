@@ -145,7 +145,7 @@ app.post('/api/userEarnPoints', function(req, res) {
   var cardId = req.body.cardid;
   var points = parseFloat(req.body.points);
   var CompanyId = req.body.partnerid;
-  var credit = req.body.credit;
+  var credit = parseFloat(req.body.credit);
 
   //print variables
   console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + ' credit: ' + credit);
@@ -189,7 +189,7 @@ app.post('/api/userUsePoints', function(req, res) {
   var cardId = req.body.cardid;
   var points = parseFloat(req.body.points);
   var CompanyId = req.body.partnerid;
-  var credit = req.body.credit;
+  var credit = parseFloat(req.body.credit);
 
   //print variables
   console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId +'credit'+credit);
