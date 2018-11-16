@@ -137,49 +137,7 @@ app.post('/api/registerCompany', function(req, res) {
 
 });
 
-//post call to perform userEarnPoints transaction on the network
-app.post('/api/userEarnPoints', function(req, res) {
 
-  //declare variables to retrieve from request
-  var accountNumber = req.body.accountnumber;
-  var cardId = req.body.cardid;
-  var points = req.body.points;
-  var CompanyId = req.body.partnerid;
-  var credit = req.body.credit;
-
-  //print variables
-  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + ' credit: ' + credit);
-
-  //validate points field
-  validate.validatePoints(points)
-    .then((checkPoints) => {
-      //return error if error in response
-      if (checkPoints.error != null) {
-        res.json({
-          error: checkPoints.error
-        });
-        return;
-      } else {
-        points = checkPoints;
-        //else perforn EarnPoints transaction on the network
-        network.userEarnPointsTransaction(cardId, accountNumber, CompanyId, points,credit)
-          .then((response) => {
-            //return error if error in response
-            if (response.error != null) {
-              res.json({
-                error: response.error
-              });
-            } else {
-              //else return success
-              res.json({
-                success: response
-              });
-            }
-          });
-      }
-    });
-
-});
 
 //post call to perform UsePoints transaction on the network
 app.post('/api/userUsePoints', function(req, res) {
@@ -204,7 +162,17 @@ app.post('/api/userUsePoints', function(req, res) {
         });
         return;
       } else {
+        validate.validatePoints(credit)
+        .then((checkCredit) => {
+          //return error if error in response
+          if (checkCredit.error != null) {
+            res.json({
+              error: checkCredit.error
+            });
+            return;
+          }else{
         points = checkPoints;
+        credit = checkCredit;
         //else perforn UsePoints transaction on the network
         network.userUsePointsTransaction(cardId, accountNumber, CompanyId, points,credit)
           .then((response) => {
@@ -217,14 +185,14 @@ app.post('/api/userUsePoints', function(req, res) {
               //else return success
               res.json({
                 success: response
-              });
-            }
-          });
+            });
+           }
+        });
       }
     });
-
-
+  }});
 });
+
 
 //post call to retrieve member data, transactions data and partners to perform transactions with from the network
 app.post('/api/memberData', function(req, res) {
@@ -392,4 +360,62 @@ if (process.env.VCAP_APPLICATION) {
 //run app on port
 app.listen(port, function() {
   console.log('app running on port: %d', port);
+
+
+
+});
+
+//post call to perform userEarnPoints transaction on the network
+app.post('/api/userEarnPoints', function(req, res) {
+
+  //declare variables to retrieve from request
+  var accountNumber = req.body.accountnumber;
+  var cardId = req.body.cardid;
+  var points = parseFloat(req.body.points);
+  var CompanyId = req.body.partnerid;
+  var credit = parseFloat(req.body.credit);
+
+  //print variables
+  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + ' credit: ' + credit);
+
+  //validate points field
+  validate.validatePoints(points)
+    .then((checkPoints) => {
+      //return error if error in response
+      if (checkPoints.error != null) {
+        res.json({
+          error: checkPoints.error
+        });
+        return;
+      } else {
+        validate.validatePoints(credit)
+        .then((checkCredit) => {
+          //return error if error in response
+          if (checkCredit.error != null) {
+            res.json({
+              error: checkCredit.error
+            });
+            return;
+          }else{
+        points = checkPoints;
+        credit = checkCredit;
+        //else perforn EarnPoints transaction on the network
+        network.userEarnPointsTransaction(cardId, accountNumber, CompanyId, points,credit)
+          .then((response) => {
+            //return error if error in response
+            if (response.error != null) {
+              res.json({
+                error: response.error
+              });
+            } else {
+              //else return success
+              res.json({
+                success: response
+              });
+            }
+          });
+      }
+    });
+
+}});
 });
