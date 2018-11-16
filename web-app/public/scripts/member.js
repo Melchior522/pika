@@ -42,7 +42,7 @@ function updateMember() {
           var str = '<h2><b>' + data.firstName + ' ' + data.lastName + '</b></h2>';
           str = str + '<h2><b>' + data.accountNumber + '</b></h2>';
           str = str + '<h2><b>' + data.points + '</b></h2>';
-          str = str + '<h2><b credit=' + data.credit + '> ' + data.credit + '</b></h2>';
+          str = str + '<h2><b id="credit">' + data.credit + '</b></h2>';
           return str;
         });
         
