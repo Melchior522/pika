@@ -130,7 +130,8 @@ function earnPoints(formPoints) {
   console.log(formAccountNum);
   var formCardId = $('.card-id input').val();
   console.log(formCardId);
-  var formCredit = CREDIT;
+  var formCredit = parseFloat(CREDIT);
+  var formPoints = parseFloat(formPoints);
   console.log(formCredit);
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
@@ -202,7 +203,8 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = CREDIT;
+  var formCredit = parseFloat(CREDIT);
+  var formPoints = parseFloat(formPoints);
   
 
   //create json data
