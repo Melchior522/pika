@@ -134,7 +134,7 @@ function earnPoints(formPoints) {
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
-  var inputData = '{' + '"credit" : "' + formCredit + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId  + '"}';
+  var inputData = '{' + '"credit" : "' + formCredit + '", ' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId  + '"}';
   console.log(inputData)
 
   //make ajax call
@@ -205,7 +205,7 @@ function usePoints(formPoints) {
   
 
   //create json data
-  var inputData = '{' + '"credit" : "' + formCredit + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId  + '"}';
+  var inputData = '{' + '"credit" : "' + formCredit + '", ' + '"accountnumber" : "' + formAccountNum + '", ' + '"cardid" : "' + formCardId + '", ' + '"points" : "' + formPoints + '", ' + '"partnerid" : "' + formPartnerId  + '"}';
   console.log(inputData)
 
   //make ajax call
