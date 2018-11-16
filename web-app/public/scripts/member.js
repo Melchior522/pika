@@ -42,7 +42,7 @@ function updateMember() {
           var str = '<h2><b>' + data.firstName + ' ' + data.lastName + '</b></h2>';
           str = str + '<h2><b>' + data.accountNumber + '</b></h2>';
           str = str + '<h2><b>' + data.points + '</b></h2>';
-          str = str + '<h2><b id=\'ffck\'>' + data.credit + '</b></h2>';
+          str = str + '<div class="credit"><h2><b>' + data.credit + '</b></h2></div>';
           return str;
         });
         
@@ -137,8 +137,11 @@ function earnPoints(formPoints) {
 
   //get user input data
   var formAccountNum = $('.account-number input').val();
+  console.log(formAccountNum);
   var formCardId = $('.card-id input').val();
-  var formCredit = parseInt($('.ffck b').val());
+  console.log(formCardId);
+  var formCredit = parseInt($('.credit b').val());
+  console.log(formCredit);
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
   //create json data
@@ -209,7 +212,7 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = parseInt($('.ffck b').val());
+  var formCredit = parseInt($('.credit b').val());
   
 
   //create json data

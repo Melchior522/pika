@@ -103,7 +103,7 @@ $.ajax({
     for(let n=0;n<result.length;n++){
       if(userearnPoints.company=result[n]){
         userearnPoints.company.points = userearnPoints.company.points - userearnPoints.points;
-        await companyRegistry.update(userearnPoints.company);
+        await company.update(userearnPoints.company);
       }
       else{
         throw new Error('YES')
