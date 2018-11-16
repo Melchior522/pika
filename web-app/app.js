@@ -143,9 +143,9 @@ app.post('/api/userEarnPoints', function(req, res) {
   //declare variables to retrieve from request
   var accountNumber = req.body.accountnumber;
   var cardId = req.body.cardid;
-  var points = parseFloat(req.body.points);
+  var points = req.body.points;
   var CompanyId = req.body.partnerid;
-  var credit = parseFloat(req.body.credit);
+  var credit = req.body.credit;
 
   //print variables
   console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + ' credit: ' + credit);
@@ -187,12 +187,12 @@ app.post('/api/userUsePoints', function(req, res) {
   //declare variables to retrieve from request
   var accountNumber = req.body.accountnumber;
   var cardId = req.body.cardid;
-  var points = parseFloat(req.body.points);
+  var points = req.body.points;
   var CompanyId = req.body.partnerid;
-  var credit = parseFloat(req.body.credit);
+  var credit = req.body.credit;
 
   //print variables
-  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId +'credit'+credit);
+  console.log('Using param - points: ' + points + ' CompanyId: ' + CompanyId + ' accountNumber: ' + accountNumber + ' cardId: ' + cardId + ' credit: ' + credit);
 
   //validate points field
   validate.validatePoints(points)

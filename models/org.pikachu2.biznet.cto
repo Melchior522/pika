@@ -24,74 +24,74 @@ participant Member identified by  accountNumber{
   o String lastName
   o String phoneNumber
   o String email
-  o Integer points
-  o Integer credit
+  o Double points
+  o Double credit
 }
 
 //company信息
 participant Company identified by id{
   o String id
   o String name 
-  o Integer points
-  o Integer credit
+  o Double points
+  o Double credit
 }
 
 //user
 transaction userEarnCredit {
-  o Integer credit
+  o Double credit
   --> Member member
 }
 
 transaction userLoseCredit {
-  o Integer credit
+  o Double credit
   --> Member member
 }
 //company
 transaction companyLoseCredit {
-  o Integer credit
+  o Double credit
   --> Company company
 }
 transaction companyEarnCredit {
-  o Integer credit
+  o Double credit
   --> Company company
 }
 
 //points earned
 transaction userEarnPoints {
-    o Integer points
-    o Integer credit
+    o Double points
+    o Double credit
     --> Company company
     --> Member member    
 }
 transaction userEarnPointsFromUser {
-    o Integer points
+    o Double points
     --> Member member
     --> Member othermember    
 }
 
 //points spent
 transaction userUsePoints {
-    o Integer points
-    o Integer credit
+    o Double points
+    o Double credit
     --> Company company  
     --> Member member
 }
 transaction userUsePointsToUser {
-    o Integer points
+    o Double points
     --> Member member  
     --> Member othermember
 }
 
 //points earned
 transaction companyEarnPoints {
-    o Integer points
+    o Double points
     --> Company company
     --> Member member
 }
 
 //points spent
 transaction companyUsePoints {
-    o Integer points
+    o Double points
     --> Company company
     --> Member member
 }

@@ -108,33 +108,22 @@ function updateMember() {
 
     }
   });
-  
 }
-
-
 $('.earn-points-30').click(function() {
   earnPoints(30);
 });
-
 $('.earn-points-80').click(function() {
   earnPoints(80);
 });
-
 $('.earn-points-200').click(function() {
   earnPoints(200);
 });
-
-
 //check user input and call server
 $('.earn-points-transaction').click(function() {
-
   var formPoints = $('.earnPoints input').val();
   earnPoints(formPoints/5);
 });
-
-
 function earnPoints(formPoints) {
-
   //get user input data
   var formAccountNum = $('.account-number input').val();
   console.log(formAccountNum);
