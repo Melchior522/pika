@@ -1,5 +1,5 @@
 var apiUrl = location.protocol + '//' + location.host + "/api/";
-
+var CREDIT=0;
 //check user input and call server
 $('.sign-in-member').click(function() {
   updateMember();
@@ -43,6 +43,7 @@ function updateMember() {
           str = str + '<h2><b>' + data.accountNumber + '</b></h2>';
           str = str + '<h2><b>' + data.points + '</b></h2>';
           str = str + '<h2><b id="credit">' + data.credit + '</b></h2>';
+          CREDIT = data.credit;
           return str;
         });
         
@@ -129,7 +130,7 @@ function earnPoints(formPoints) {
   console.log(formAccountNum);
   var formCardId = $('.card-id input').val();
   console.log(formCardId);
-  var formCredit = data.credit;
+  var formCredit = CREDIT;
   console.log(formCredit);
   var formPartnerId = $('.earn-partner select').find(":selected").attr('partner-id');
 
@@ -201,7 +202,7 @@ function usePoints(formPoints) {
   var formAccountNum = $('.account-number input').val();
   var formCardId = $('.card-id input').val();
   var formPartnerId = $('.use-partner select').find(":selected").attr('partner-id');
-  var formCredit = data.credit;
+  var formCredit = CREDIT;
   
 
   //create json data
