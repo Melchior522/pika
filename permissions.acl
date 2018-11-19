@@ -99,7 +99,7 @@ rule CompanyAccessuserEarnPoints {
     participant(p): "org.pikachu2.biznet.Company"
     operation: READ
     resource(r): "org.pikachu2.biznet.userEarnPoints"
-    condition: (r.Company.getIdentifier() === p.getIdentifier())
+    condition: (r.company.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
 
@@ -109,7 +109,7 @@ rule CompanyAccessuserUsePoints {
     participant(p): "org.pikachu2.biznet.Company"
     operation: READ
     resource(r): "org.pikachu2.biznet.userUsePoints"
-    condition: (r.Company.getIdentifier() === p.getIdentifier())
+    condition: (r.company.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
 
