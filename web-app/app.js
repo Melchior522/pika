@@ -294,18 +294,18 @@ app.post('/api/partnerData', function(req, res) {
 
   //get partner data from network
   network.CompanyData(cardId, CompanyId)
-    .then((partner) => {
+    .then((Company) => {
       //return error if error in response
-      if (partner.error != null) {
+      if (Company.error != null) {
         res.json({
-          error: partner.error
+          error: Company.error
         });
       } else {
         //else add partner data to return object
-        returnData.id = partner.id;
-        returnData.name = partner.name;
-        returnData.points=partner.points;
-        returnData.credit = partner.credit;
+        returnData.id = Company.id;
+        returnData.name = Company.name;
+        returnData.points=Company.points;
+        returnData.credit = Company.credit;
       }
 
     })
